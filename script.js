@@ -1,13 +1,3 @@
-let isOver = false,
-    scoreX = 0,
-    scoreO = 0, 
-    ties = 0,
-    roundNumber = 1;     
-
-const winnerX = document.querySelector('.playerX > .score'),
-      winnerO = document.querySelector('.playerO > .score'),
-      round = document.querySelector('.round > .score'),
-      tie = document.querySelector('.ties > .score')
 const Player = (marker) => {
     return {marker};
 };
@@ -27,6 +17,7 @@ const gameBoard = (() => {
             boardArray[i] = '';
         }
     }
+
     return {boardArray, markerIntoArray, resetArray}
 })();
 
@@ -38,8 +29,7 @@ const display = (() => {
             let boxContent = e.target.textContent;
             if (boxContent !== '') return;
             playGame.playRound(arrayIndex);
-            updateBoard();
-            
+            updateBoard(); 
         });
     });
 
@@ -51,19 +41,14 @@ const display = (() => {
     
     const resetRound = () => {
         if (activePlayer.marker === 'O') playGame.getNextPlayer();
-        isOver = false;
+        playGame.getIsOver()
         gameBoard.resetArray();
         updateBoard();
     } 
 
     const resetGame = () => {
         resetRound();
-        scoreX = 0;
-        scoreO = 0;
-        roundNumber = 1;
-        winnerX.textContent = 0
-        winnerO.textContent = 0
-        round.textContent = 1
+        playGame.reset();
     }
 
     const continueRound = document.querySelector('.continue')
@@ -71,11 +56,24 @@ const display = (() => {
 
     const reset = document.querySelector('.reset')
     reset.addEventListener('click', (resetGame))
- 
-    return {boxes, resetRound, resetGame, updateBoard, continueRound}
+
+    return { resetRound, resetGame, updateBoard}
 })();
 
 const playGame = (() => {
+    
+    let isOver = false,
+        scoreX = 0,
+        scoreO = 0, 
+        ties = 0,
+        roundNumber = 1;     
+
+    const winnerX = document.querySelector('.playerX > .score'),
+          winnerO = document.querySelector('.playerO > .score'),
+          round = document.querySelector('.round > .score'),
+          tie = document.querySelector('.ties > .score');
+
+
     const playerX = Player('X'),
           playerO = Player('O');
 
@@ -95,7 +93,7 @@ const playGame = (() => {
         getNextPlayer();
     })
 
-    const checkWinner = (() => {
+    const checkWinner = () => {
         const solutions = [
             [0, 1, 2],
             [3, 4, 5],
@@ -127,13 +125,31 @@ const playGame = (() => {
                     scoreO++;
                     roundNumber++
                     winnerO.textContent = scoreO;
-                } else {
-                    ties++;
-                    tie.textContent = 'dsads';
-                }
+                } 
                 return isOver = true;
-            } 
+            }
         }
-    })
-    return {activePlayer, roundNumber, scoreX, scoreO, playRound, getNextPlayer, checkWinner}
+        
+        if (!board.includes('')) {
+            ties++;
+            tie.textContent = ties; 
+        } 
+    }
+
+    const reset = () => {
+        scoreX = 0;
+        scoreO = 0;
+        roundNumber = 1;
+        winnerX.textContent = 0
+        winnerO.textContent = 0
+        round.textContent = 1
+    }
+
+    const getIsOver = () => {
+        isOver = false
+    }
+
+            
+    return {playRound, getNextPlayer, checkWinner, reset, getIsOver}
+
 })();
