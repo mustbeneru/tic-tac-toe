@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="header">Tic Tac Toe</header>
+    <section class="main">
+        <div class="gameBoard">
+            <div class="box" data-index="0"></div>
+            <div class="box" data-index="1"></div>
+            <div class="box" data-index="2"></div>
+            <div class="box" data-index="3"></div>
+            <div class="box" data-index="4"></div>
+            <div class="box" data-index="5"></div>
+            <div class="box" data-index="6"></div>
+            <div class="box" data-index="7"></div>
+            <div class="box" data-index="8"></div>
+        </div>
+        <div class="message">
+            <div class="round">
+                <div class="text">Round</div>
+                <div class="score">1</div>
+            </div>
+
+            <div class="bottom">
+                <div class="playerX"> 
+                    <div class="text">Player X</div>
+                    <div class="score">0</div>
+                </div>
+             
+                <div class="ties">
+                    <div class="text">Ties</div>
+                    <div class="score">0</div>
+                </div>
+
+                <div class="playerO">
+                    <div class="text">Player O</div>
+                    <div class="score">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="continue">Continue Next Round</button>
+            <button class="reset">Reset Game</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Created by: mustbeneru © <script>document.write( new Date().getFullYear() );</script></p>
+    </footer>    
+
+    <script src="./script.js" defer></script>
+</body>
+</html>

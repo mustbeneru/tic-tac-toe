@@ -1,0 +1,144 @@
+@font-face {
+    font-family: poppins;
+    src: url(./font/Poppins-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFEAD0;;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-family: poppins, sans-serif;
+}
+
+.header {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    background-color: #96616b;
+    width: 100vw;
+    color: #f0f3f5;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 350px;
+    min-height: 350px;
+    gap: 1rem;
+    margin: auto;
+}
+
+.box {
+    border: 1px solid black;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.656);
+    user-select: none;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: .5rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    gap: 2rem;
+    margin-top: 1.5rem;
+
+}
+
+.round {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #ecc8af;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    margin: auto;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bottom {
+    background-color: #37505c;
+    border-radius: 1rem;
+    padding: 1.5rem 3rem;
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.playerX,
+.ties,
+.playerO {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #f0f3f5;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+}
+
+.buttons button {
+    padding: 1rem;
+    font-size: 1rem;
+    background: none;
+    width: fit-content;
+    color: black;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.527);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.423);
+}
+
+button:hover {
+    cursor: pointer;
+    border: none;
+    background: #7c931468;
+    padding: 1.5rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    transition: all .7s ease; 
+}
+
+.box:hover {
+    border: none;
+    background-color: antiquewhite;
+}
+
+.footer {
+    position: fixed;
+    margin-top: 2rem;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+}
